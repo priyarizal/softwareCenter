@@ -4,16 +4,21 @@ const { User } = require('../models');
 router.get('/', async (req, res) => {
     //this is grabbing the user_id of whoever's logged in
 
-    const userId = req.session.user_id
+    if (req.session.logged_in) {
 
-    const userData = await User.findOne({
-        where: {
-            id:
-                userId
-        }
-    });
-    res.render('home', userData.dataValues)
+        const userId = req.session.user_id
 
+        const userData = await User.findOne({
+            where: {
+                id:
+                    userId
+            }
+        });
+        res.render('home', userData.dataValues)
+    } else {
+        res.redirect('/login')
+        return;
+    }
 });
 
 router.get('/profile/:userId', async (req, res) => {
@@ -39,11 +44,11 @@ router.get('/login', async (req, res) => {
             return;
         }
 
-    //if the user isnt logged in then render login page
+        //if the user isnt logged in then render login page
         if (!req.session.logged_in) {
             res.render('login')
         }
-        
+
     } catch (err) {
         res.status(500).json(err);
     }
