@@ -4,18 +4,20 @@ const { User } = require('../../models');
 const cloudinary = require("cloudinary").v2;
 const express = require('express');
 const multer = require("multer");
+const session = require('express-session')
 
 router.post('/', async (req, res) => {
+    console.log("router hit")
     console.log(req.body)
     try {
         console.log(req)
         const userData = await User.create(req.body);
-        // req.session.save(() => {
-        //     req.session.user_id = userData.id;
-        //     req.session.logged_in = true;
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
 
-        //     res.status(200).json(userData);
-        // });
+            res.status(200).json(userData);
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -58,7 +60,6 @@ router.post('/login', async (req, res) => {
 //post routes for login 
 //within the post route to login - check if the email and password are valid (checkpassword)
 //logout post route (destroy)
-
 
 
 router.post('/images', (req, res) => {

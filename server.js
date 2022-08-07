@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express');
-// const routes = require('./controllers/api/index');
+const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const mysql = require('mysql2');
 const exphbs = require('express-handlebars');
@@ -28,6 +28,7 @@ const sess = {
 
 app.use(session(sess));
 app.use(require('./controllers/'));
+app.use(routes);
 // app.use(bodyParser.urlencoded({extended: true}));
 
 // Set up Handlebars.js engine with custom helpers
