@@ -7,27 +7,8 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const multer = require("multer");
-// const cloudinary = require("cloudinary");
-// const cloudinaryStorage = require("multer-storage-cloudinary");
+
 require('dotenv').config();
-
-// handlebars
-//npm library session
-//sequelize
-//
-
-
-//packages to download: 
-//eslint
-//express
-//sequelize
-//mysql2
-//handlebars
-//express-session
-//connect-session-sequelize
-//dotenv 
-//bcrypt
 
 //initializing express and writing down the port number to listen to + 
 const app = express();

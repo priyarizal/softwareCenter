@@ -6,14 +6,10 @@ const techInterest = require('./techinterests');
 const ProjectUser = require('./projectUser');
 const Project = require('./Project');
 
-//userproject join table - how Im joining them 
-// users are the collaborators
-//collabs can go through many to many join table
-//one user can have many proj but can only have one owner
 
 //User hasMany projects
 User.belongsToMany(project, {
-    foreignKey: 'project_id', //is this correct?
+    foreignKey: 'project_id', 
     through:{
       model: ProjectUser,
       unique: false,
@@ -24,7 +20,7 @@ User.belongsToMany(project, {
   });
 
 Project.belongsToMany(User, {
-    foreignKey: 'user_id', //is this correct?
+    foreignKey: 'user_id', 
     through:{
       model: ProjectUser,
       unique: false,
@@ -34,7 +30,7 @@ Project.belongsToMany(User, {
  
  //User haveMany techInterests
   User.hasMany(techInterest, {
-    foreignKey: 'user_id', //is this foreign key correct? confused about foreign keys?
+    foreignKey: 'user_id', 
     onDelete: "CASCADE"
   });
 
@@ -43,28 +39,6 @@ Project.belongsToMany(User, {
     onDelete: 'CASCADE'
   });
   
-  //Users HasMany (users) - through a join friends table
-  // User.belongsToMany(User, {
-
-  //   through: {
-  //     model: User, //should I be creating a User/friends table then? user belongs to many user makes no sense + through user makes no sense
-  //     unique: false
-  //   },
-  //   foreignKey: 'user_id',
-  // })
-
-  //techinterests
-
-//techinterests BelongsToMany Users
-  // techInterest.belongsToMany(User, {
-  
-  //   through: {
-  //     model: User, //dont think this is correct
-  //     unique: false
-  //   },
-  //   foreignKey: 'user_id',
-  // })
-
 
 module.exports = {
     techInterest,

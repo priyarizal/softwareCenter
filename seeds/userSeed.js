@@ -5,7 +5,10 @@ const userSeedData =
     {
       name: "Yuh",
       email: "Yuh@hotmail.com",
-      password: "password12"
+      password: "password12",
+      profileImage: "https://www.lomsnesvet.ca/wp-content/uploads/sites/21/2019/08/Kitten-Blog.jpg",
+      Bio: "Hi, I have 5 kittens and I love them"
+
     },
     {
       name: "LarrytheLobster",
@@ -18,7 +21,9 @@ const userSeedData =
     {
       name: "Anika",
       email: "anika@aol.com",
-      password: "password12"
+      password: "password12",
+      profileImage: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1623959191-medium-plant-dieffenbachia-white-pot_2048x.jpg",
+      Bio: "Hi, outside of coding, I am a plant mom"
     }
   ]
 
