@@ -27,8 +27,8 @@ const sess = {
 };
 
 app.use(session(sess));
-app.use(require('./controllers/'));
-app.use(routes);
+// app.use(require('./controllers/'));
+
 // app.use(bodyParser.urlencoded({extended: true}));
 
 // Set up Handlebars.js engine with custom helpers
@@ -41,8 +41,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+    app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });
