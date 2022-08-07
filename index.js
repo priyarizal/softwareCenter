@@ -43,28 +43,7 @@ Project.belongsToMany(User, {
     onDelete: 'CASCADE'
   });
   
-  //Users HasMany (users) - through a join friends table
-  // User.belongsToMany(User, {
-
-  //   through: {
-  //     model: User, //should I be creating a User/friends table then? user belongs to many user makes no sense + through user makes no sense
-  //     unique: false
-  //   },
-  //   foreignKey: 'user_id',
-  // })
-
-  //techinterests
-
-//techinterests BelongsToMany Users
-  // techInterest.belongsToMany(User, {
   
-  //   through: {
-  //     model: User, //dont think this is correct
-  //     unique: false
-  //   },
-  //   foreignKey: 'user_id',
-  // })
-
 
 module.exports = {
     techInterest,

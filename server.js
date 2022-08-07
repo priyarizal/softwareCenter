@@ -1,12 +1,14 @@
 const path = require('path')
 const express = require('express');
-const routes = require('./controllers/api/index');
+// const routes = require('./controllers/api/index');
 const sequelize = require('./config/connection');
 const mysql = require('mysql2');
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// const bodyParser  = require('body-parser');
+
 
 require('dotenv').config();
 
@@ -25,6 +27,8 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(require('./controllers/'));
+// app.use(bodyParser.urlencoded({extended: true}));
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create();
@@ -33,11 +37,9 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use("/api",routes);
 
 
 sequelize.sync({ force: false }).then(() => {
