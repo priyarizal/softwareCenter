@@ -60,7 +60,16 @@ router.post('/login', async (req, res) => {
 //post routes for login 
 //within the post route to login - check if the email and password are valid (checkpassword)
 //logout post route (destroy)
-
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            // res.status(204).end();
+            res.status(204).json('You\'re now logged out');
+        });
+    } else {
+        res.status(404).json("You\'re not logged in")
+    }
+});
 
 router.post('/images', (req, res) => {
     console.log('idk')
