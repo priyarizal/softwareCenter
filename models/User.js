@@ -38,17 +38,17 @@ User.init(
             validate: {
                 len: [10],
             },
-
-            profileImage: {
-                type: DataTypes.STRING,
-                allowNull: true,
-            },
-
-            bio: {
-                type: DataTypes.TEXT,
-                allowNull: true,
-            }
         },
+
+        profileImage: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+
+        Bio: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        }
     },
     //add hooks for beforecreate and beforeUpdate with .hash and the allowed length of passowrd 
     {

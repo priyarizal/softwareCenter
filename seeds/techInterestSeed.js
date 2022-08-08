@@ -1,4 +1,4 @@
-const { techInterest } = require('../models');
+const { TechInterest } = require('../models');
 
 const techInterestSeedData = 
 [
@@ -9,6 +9,6 @@ const techInterestSeedData =
     },
 ]
 
-const seedingTechInterest = () => techInterest.bulkCreate(techInterestSeedData)
+const seedingTechInterest = () => TechInterest.bulkCreate(techInterestSeedData)
 
 module.exports = seedingTechInterest;
