@@ -1,7 +1,7 @@
-const newFormHandler = async (event) => {
+const projectButtonHandler = async (event) => {
     event.preventDefault();
 
-    const name = document.querySelector('#project-name').value.trim();
+    const name = document.querySelector('#project-name')
     const description = document.querySelector('#project-desc').value.trim();
     if (name && description) {
         const response = await fetch(`/api/projects`, {
@@ -19,3 +19,9 @@ const newFormHandler = async (event) => {
     }
 };
 
+document
+    .querySelector('.new-project')
+    .addEventListener('submit', projectButtonHandler);
+
+
+module.exports = router; 
