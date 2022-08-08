@@ -16,13 +16,15 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+
 router.get('/user/:id', withAuth, async (req, res) => {
   try {
     const newProject = await Project.findByPk({
-      ...req.body,
-      user_id: req.session.user_id,
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      }
     });
-
     res.status(200).json(newProject);
   } catch (err) {
     console.log(err)
