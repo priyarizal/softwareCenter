@@ -3,10 +3,11 @@ const projectButtonHandler = async (event) => {
 
     const name = document.querySelector('#project-name-input').value;
     const description = document.querySelector('#project-desc').value.trim();
+    const collaborator = document.querySelector('#collab').value.trim();
     if (name && description) {
         const response = await fetch(`/api/projects`, {
             method: 'POST',
-            body: JSON.stringify({ name, description }),
+            body: JSON.stringify({ name, collaborator, description }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -18,6 +19,7 @@ const projectButtonHandler = async (event) => {
         }
     }
 };
+
 
 document
     .querySelector('#new-project-form')

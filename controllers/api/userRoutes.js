@@ -1,10 +1,22 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth')
 
 const cloudinary = require("cloudinary").v2;
 const express = require('express');
 const multer = require("multer");
 const session = require('express-session')
+
+router.get('/all', async (req, res) => {
+    console.log(req.body)
+    try {
+        const userData = await User.findAll(req.body);
+        console.log(userData)
+        res.status(200).send(userData)
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 router.post('/', async (req, res) => {
     console.log("router hit")
