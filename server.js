@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helmet = require("helmet");
 // const bodyParser  = require('body-parser');
 
 
@@ -27,6 +28,20 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(helmet({
+    crossOriginEmbedderPolicy: false,
+}));
+// app.use(helmet.contentSecurityPolicy());
+
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            "img-src": ["'self'", "bootdey.com"],
+        },
+    })
+);
+
 // app.use(require('./controllers/'));
 
 // app.use(bodyParser.urlencoded({extended: true}));
