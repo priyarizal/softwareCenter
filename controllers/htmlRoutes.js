@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { Project, User } = require('../models');
 
 router.get('/', async (req, res) => {
     //this is grabbing the user_id of whoever's logged in
