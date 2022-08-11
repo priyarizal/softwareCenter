@@ -3,6 +3,8 @@
 {{!--
 <link src="./public/css/style.css " rel="stylesheet"> --}}
 
+<link rel="stylesheet" href="./css/style.css">
+
 <div class="row gutters-sm">
     <div class="col-md-4 mb-3">
         <div class="card">
@@ -77,28 +79,34 @@
                     </div>
                 </div>
                 <hr>
+
+
                 <div class="row">
                     <div class="col-sm-12">
                         <a class="btn btn-info " target="__blank"
                             href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
                     </div>
-
                 </div>
             </div>
         </div>
-        {{!-- create a class and give it margin between the upper div and this one --}}
+        {{#each projects as |project| }}
         <div class="row">
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="card">
                             <h5 class="card-header">Featured</h5>
+
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.
+                                <div class="col-md-8">
+                                    <h4><a href="/{{project.id}}">{{project.name}}</a></h4>
+                                </div>
+                                <h5 class="card-title">{{project.name}}Projects</h5>
+                                <p class="card-text">KittyFood
+
+                                    {{project.description}}
                                 </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn btn-primary">Projects</a>
                             </div>
                         </div>
                     </div>
@@ -106,5 +114,7 @@
             </div>
         </div>
     </div>
-
 </div>
+{{/each}}
+
+<script src="./js/project.js"></script>
