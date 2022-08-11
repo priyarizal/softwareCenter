@@ -1,4 +1,4 @@
-const projectButtonHandler = async (event) => {
+const newFormHandler = async (event) => {
     event.preventDefault();
 
     const name = document.querySelector('#project-name-input').value;
@@ -20,9 +20,10 @@ const projectButtonHandler = async (event) => {
     }
 };
 
+var newValue = document.querySelector('#new-project-form')
+newValue.addEventListener('submit', newFormHandler);
 
-document
-    .querySelector('#new-project-form')
-    .addEventListener('submit', projectButtonHandler);
+// addEventListener('submit', projectButtonHandler);
+console.log(newValue)
 
 
